@@ -1,40 +1,52 @@
-import { motion } from "motion/react";
+﻿import { motion } from "motion/react";
+import { Link } from "@tanstack/react-router";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
-
-const LINES = [
-  "Before there was a nation, there was a dream.",
-  "Before the flag, there was a struggle.",
-  "Before the first dawn, there was a journey.",
-];
 
 export function OpeningNarrative() {
   const reduced = useReducedMotion();
+  const animation = reduced
+    ? { initial: { opacity: 1, y: 0 }, animate: { opacity: 1, y: 0 } }
+    : {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
+      };
 
   return (
-    <section className="dark grain bg-background px-5 py-32 text-foreground sm:px-8 sm:py-44">
-      <div className="mx-auto max-w-3xl space-y-10">
-        {LINES.map((line, i) => (
-          <motion.p
-            key={line}
-            initial={reduced ? { opacity: 1 } : { opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.9, delay: reduced ? 0 : i * 0.15 }}
-            className="font-display text-[clamp(1.5rem,4.5vw,2.75rem)] leading-tight text-foreground/85"
-          >
-            {line}
-          </motion.p>
-        ))}
+    <section className="bg-background px-5 py-20 text-foreground sm:px-8">
+      <div className="mx-auto max-w-5xl space-y-10">
+        <motion.div {...animation}>
+          <p className="eyebrow">Opening Narrative</p>
+          <h2 className="mt-4 text-4xl font-display tracking-tight text-foreground sm:text-5xl">
+            The first days of a new nation, told through people, places, and pivotal choices.
+          </h2>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Explore the archive of Partition-era decisions, the geography of migration, and the
+            stories that shaped Pakistan's creation. This site combines timelines, sourced
+            documents, and interactive maps to make the history feel immediate and grounded.
+          </p>
+        </motion.div>
 
-        <motion.p
-          initial={reduced ? { opacity: 1 } : { opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 1.4, delay: reduced ? 0 : 0.3 }}
-          className="pt-6 font-display text-[clamp(1.75rem,5.5vw,3.5rem)] leading-tight text-primary"
-        >
-          This is the story of Pakistan.
-        </motion.p>
+        <motion.div {...animation} className="grid gap-6 sm:grid-cols-2">
+          <Link
+            to="/people"
+            className="rounded-3xl border border-border bg-card px-8 py-8 text-left transition hover:border-primary hover:bg-primary/10"
+          >
+            <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">People</p>
+            <p className="mt-4 text-xl font-semibold text-foreground">
+              Biographies and leadership in 1947
+            </p>
+          </Link>
+          <Link
+            to="/map"
+            className="rounded-3xl border border-border bg-card px-8 py-8 text-left transition hover:border-primary hover:bg-primary/10"
+          >
+            <p className="text-sm uppercase tracking-[0.22em] text-muted-foreground">Map</p>
+            <p className="mt-4 text-xl font-semibold text-foreground">
+              Geographic context for the new country
+            </p>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
