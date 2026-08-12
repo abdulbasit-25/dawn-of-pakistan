@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion";
+import { AnimatePresence, motion } from "motion/react";
 import type { Person } from "@/types";
 
 export function PersonProfile({ person }: { person: Person }) {

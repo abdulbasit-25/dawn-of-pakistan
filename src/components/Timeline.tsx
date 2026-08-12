@@ -1,5 +1,5 @@
 import { useId, useRef, useState, type PointerEvent } from "react";
-import { AnimatePresence, motion } from "motion";
+import { AnimatePresence, motion } from "motion/react";
 import { events, type HistoricalEvent } from "@/data/events";
 
 function EventDetail({ event }: { event: HistoricalEvent }) {

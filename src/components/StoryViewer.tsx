@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "motion";
+import { AnimatePresence, motion } from "motion/react";
 import { type Story } from "@/types";
 
 export function StoryViewer({ story }: { story: Story }) {
