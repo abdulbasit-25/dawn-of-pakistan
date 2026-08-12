@@ -56,11 +56,9 @@ export function AskGuide() {
   };
 
   const quickSummary = useMemo(() => {
-    if (messages.length <= 1) return "";
     const last = messages[messages.length - 1];
-    return last.role === "assistant"
-      ? last.text.slice(0, 180) + (last.text.length > 180 ? "..." : "")
-      : "";
+    if (!last || last.role !== "assistant") return "";
+    return last.text.slice(0, 180) + (last.text.length > 180 ? "..." : "");
   }, [messages]);
 
   return (

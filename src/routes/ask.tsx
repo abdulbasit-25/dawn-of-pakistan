@@ -26,7 +26,8 @@ function AskPage() {
       subtitle="Explore the archive with an AI historical guide."
     >
       <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-        Ask Pakistan about the archive's timeline, people, migration stories, and geography. Answers are served by a backend endpoint that uses the site's own curated dataset.
+        Ask Pakistan about the archive's timeline, people, migration stories, and geography. Answers
+        are served by a backend endpoint that uses the site's own curated dataset.
       </p>
 
       <div className="mt-10">

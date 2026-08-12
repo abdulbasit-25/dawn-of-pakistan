@@ -26,7 +26,8 @@ function ArchivePage() {
       subtitle="Documents, photographs, maps, and speeches — each with its source."
     >
       <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-        Search the archive by year, category and location. Every item is clearly sourced and labeled with its verification status.
+        Search the archive by year, category and location. Every item is clearly sourced and labeled
+        with its verification status.
       </p>
 
       <div className="mt-10">

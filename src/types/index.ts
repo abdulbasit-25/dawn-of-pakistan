@@ -59,13 +59,7 @@ export interface Story {
 }
 
 export type PlaceCategory =
-  | "province"
-  | "city"
-  | "mountain"
-  | "river"
-  | "desert"
-  | "coast"
-  | "region";
+  "province" | "city" | "mountain" | "river" | "desert" | "coast" | "region";
 
 export interface Place {
   id: string;
@@ -92,13 +86,7 @@ export interface MigrationRoute {
 }
 
 export type ArchiveCategory =
-  | "Documents"
-  | "Photographs"
-  | "Maps"
-  | "Speeches"
-  | "People"
-  | "Events"
-  | "Stories";
+  "Documents" | "Photographs" | "Maps" | "Speeches" | "People" | "Events" | "Stories";
 
 export interface ArchiveItem {
   id: string;

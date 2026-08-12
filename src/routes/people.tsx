@@ -32,7 +32,8 @@ function PeoplePage() {
       subtitle="Founders, thinkers, and the lives behind the dates."
     >
       <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-        Explore archival biographies of leaders and thinkers whose ideas, speeches, and decisions shaped the path to Pakistan.
+        Explore archival biographies of leaders and thinkers whose ideas, speeches, and decisions
+        shaped the path to Pakistan.
       </p>
 
       <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(280px,1fr)_minmax(520px,1.2fr)]">

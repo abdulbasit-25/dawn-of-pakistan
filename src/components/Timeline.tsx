@@ -1,6 +1,7 @@
 import { useId, useRef, useState, type PointerEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { events, type HistoricalEvent } from "@/data/events";
+import { events } from "@/data/events";
+import type { HistoricalEvent, Source } from "@/types";
 
 function EventDetail({ event }: { event: HistoricalEvent }) {
   return (
@@ -60,7 +61,7 @@ function EventDetail({ event }: { event: HistoricalEvent }) {
       <div className="border-t border-[#1C211E]/10 pt-3">
         <p className="mb-1 text-xs uppercase tracking-wide text-[#6D736C]">Sources</p>
         <ul className="space-y-1">
-          {event.sources.map((source) => (
+          {event.sources.map((source: Source) => (
             <li key={source.label} className="text-xs text-[#1C211E]/80">
               {source.url ? (
                 <a

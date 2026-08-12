@@ -29,6 +29,10 @@ export function MapPanels() {
     [],
   );
 
+  if (!selectedRoute) {
+    return null;
+  }
+
   return (
     <div className="space-y-12">
       <section className="space-y-6 rounded-3xl border border-[#1C211E]/10 bg-[#F4F0E6]/70 p-6">
@@ -52,7 +56,9 @@ export function MapPanels() {
                   {selectedRoute.waypoints.map((point, index) => {
                     const [x, y] = normalize(point.coordinates);
                     if (index === 0) return null;
-                    const [px, py] = normalize(selectedRoute.waypoints[index - 1].coordinates);
+                    const previous = selectedRoute.waypoints[index - 1];
+                    if (!previous) return null;
+                    const [px, py] = normalize(previous.coordinates);
                     return <line key={`${px}-${py}-${x}-${y}`} x1={px} y1={py} x2={x} y2={y} />;
                   })}
                 </g>

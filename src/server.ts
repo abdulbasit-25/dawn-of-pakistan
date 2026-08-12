@@ -2,6 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { answerArchiveQuestion } from "./lib/ask-backend";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -47,6 +48,25 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      if (new URL(request.url).pathname === "/api/ask" && request.method === "POST") {
+        const body = await request.json();
+        const question = String(body.question ?? "").trim();
+        const mode = String(body.mode ?? "SIMPLE").toUpperCase();
+
+        if (!question) {
+          return new Response(JSON.stringify({ error: "Question is required." }), {
+            status: 400,
+            headers: { "content-type": "application/json" },
+          });
+        }
+
+        const answer = answerArchiveQuestion(question, mode);
+        return new Response(JSON.stringify(answer), {
+          status: 200,
+          headers: { "content-type": "application/json" },
+        });
+      }
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
